@@ -23,44 +23,52 @@
         }
         /* Container to center the content */
         .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-        }
-        /* Section styling for different parts of the page */
-        .section {
-            background: white;
-            padding: 20px;
-            margin: 20px 0;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h2, h3 {
-            color: #333;
-        }
-        /* Centering the h2 element */
-        h2 {
-            text-align: center;
-        }
-        h3 {
-            text-align: center;
-        }
-        /* Styling for the tabs */
-        .tabs {
             display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
+            margin: 0 auto;
+            width: 80%;
         }
-        .tab {
-            background: #B22222;
+        /* Sidebar styling */
+        .sidebar {
+            background-color: #333;
             color: white;
-            padding: 10px 20px;
-            cursor: pointer;
-            margin: 0 5px;
-            border-radius: 5px;
+            width: 200px;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
         }
-        .tab.active {
-            background: #333;
+        .sidebar h3 {
+            color: #f4f4f4;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 15px 0;
+        }
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            background: #B22222;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .sidebar ul li a:hover, .sidebar ul li a.active {
+            background: #444;
+        }
+        /* Main content area */
+        .content {
+            flex: 1;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
         }
         /* Styling for the tables */
         table {
@@ -97,39 +105,40 @@
         /* Media query for smaller screens */
         @media (max-width: 768px) {
             .container {
+                flex-direction: column;
                 width: 100%;
-                padding: 0 10px;
+            }
+            .sidebar {
+                width: 100%;
+                min-height: auto;
             }
             th, td {
                 padding: 10px; /* Smaller padding on mobile */
             }
-            .team-column {
-                width: auto; /* Auto width on mobile */
-            }
-            .position-column, .wins-column, .pd-column {
+            .team-column, .position-column, .wins-column, .pd-column {
                 width: auto; /* Auto width on mobile */
             }
         }
     </style>
     <script>
         // JavaScript function to switch between tabs
-        function openTab(event, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
+        function openSection(event, sectionId) {
+            var i, sections, links;
+            sections = document.getElementsByClassName("section");
+            for (i = 0; i < sections.length; i++) {
+                sections[i].classList.remove("active");
             }
-            tablinks = document.getElementsByClassName("tab");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            links = document.querySelectorAll(".sidebar ul li a");
+            for (i = 0; i < links.length; i++) {
+                links[i].classList.remove("active");
             }
-            document.getElementById(tabName).style.display = "block";
-            event.currentTarget.className += " active";
+            document.getElementById(sectionId).classList.add("active");
+            event.currentTarget.classList.add("active");
         }
 
-        // Default open tab
+        // Default open section
         window.onload = function() {
-            document.getElementById("defaultOpen").click();
+            document.querySelector(".sidebar ul li a").click();
         }
     </script>
 </head>
@@ -142,178 +151,206 @@
 
 <!-- Main container -->
 <div class="container">
-    <!-- Current Standings section with tabs -->
-    <div class="section">
-        <h2>Current Standings</h2>
-        <div class="tabs">
-            <div class="tab active" id="defaultOpen" onclick="openTab(event, 'WesternConference')">Western Conference</div>
-            <div class="tab" onclick="openTab(event, 'EasternConference')">Eastern Conference</div>
-        </div>
-        <div id="WesternConference" class="tabcontent">
-            <h3>Western Conference</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th class="position-column">Position</th>
-                        <th class="team-column">Team</th>
-                        <th class="wins-column">Wins</th>
-                        <th class="pd-column">PD</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Flying Sacks</td>
-                        <td>1</td>
-                        <td>14</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Cornhole Contenders</td>
-                        <td>1</td>
-                        <td>9</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Corn Huskers</td>
-                        <td>1</td>
-                        <td>2</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Bag Daddys</td>
-                        <td>1</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Lighting Your Way to Another Loss</td>
-                        <td>0</td>
-                        <td>-1</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Highfliers</td>
-                        <td>0</td>
-                        <td>-9</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>Throw Masters</td>
-                        <td>0</td>
-                        <td>-14</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div id="EasternConference" class="tabcontent" style="display:none;">
-            <h3>Eastern Conference</h3>
-            <table>
-                <thead>
-                    <tr>
-                        <th class="position-column">Position</th>
-                        <th class="team-column">Team</th>
-                        <th class="wins-column">Wins</th>
-                        <th class="pd-column">PD</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Field Service One</td>
-                        <td>1</td>
-                        <td>18</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Team HG</td>
-                        <td>1</td>
-                        <td>12</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>J & J Finance Team</td>
-                        <td>1</td>
-                        <td>4</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Hacky Sacks</td>
-                        <td>0</td>
-                        <td>-2</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Quality Squirrels</td>
-                        <td>0</td>
-                        <td>-4</td>
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>Pitch Please</td>
-                        <td>0</td>
-                        <td>-12</td>
-                    </tr>
-                    <tr>
-                        <td>7</td>
-                        <td>LSI Exec Team</td>
-                        <td>0</td>
-                        <td>-18</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+    <!-- Sidebar navigation -->
+    <div class="sidebar">
+        <h3>Navigation</h3>
+        <ul>
+            <li><a href="javascript:void(0);" onclick="openSection(event, 'current-standings')" class="active">Current Standings</a></li>
+            <li><a href="javascript:void(0);" onclick="openSection(event, 'schedule')">Schedule</a></li>
+            <li><a href="javascript:void(0);" onclick="openSection(event, 'teams')">Teams</a></li>
+            <li><a href="javascript:void(0);" onclick="openSection(event, 'rules')">Rules</a></li>
+        </ul>
     </div>
 
-    <!-- Weekly Schedule section -->
-    <div class="section">
-        <h2>Weekly Schedule</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Week</th>
-                    <th>Time</th>
-                    <th>Matchup</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>2</td>
-                    <td>11:30 AM</td>
-                    <td>Flying Sacks vs Bag Daddys</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>11:30 AM</td>
-                    <td>Highfliers vs Corn Huskers</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>11:30 AM</td>
-                    <td>Throw Masters vs Cornhole Contenders</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>12:00 PM</td>
-                    <td>Team HG vs LSI Exec Team</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>12:00 PM</td>
-                    <td>Quality Squirrels vs Field Service One</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>12:00 PM</td>
-                    <td>Pitch Please vs Hacky Sacks</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>12:00 PM</td>
-                    <td>Lighting Your Way to Another Loss vs J & J Finance Team</td>
-                </tr>
-            </tbody>
-        </table>
+    <!-- Main content area -->
+    <div class="content">
+        <!-- Current Standings section -->
+        <div id="current-standings" class="section active">
+            <h2>Current Standings</h2>
+            <div class="tabs">
+                <div class="tab active" id="defaultOpen" onclick="openSection(event, 'WesternConference')">Western Conference</div>
+                <div class="tab" onclick="openSection(event, 'EasternConference')">Eastern Conference</div>
+            </div>
+            <div id="WesternConference" class="tabcontent">
+                <h3>Western Conference</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="position-column">Position</th>
+                            <th class="team-column">Team</th>
+                            <th class="wins-column">Wins</th>
+                            <th class="pd-column">PD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Flying Sacks</td>
+                            <td>1</td>
+                            <td>14</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Cornhole Contenders</td>
+                            <td>1</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Corn Huskers</td>
+                            <td>1</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Bag Daddys</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Lighting Your Way to Another Loss</td>
+                            <td>0</td>
+                            <td>-1</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Highfliers</td>
+                            <td>0</td>
+                            <td>-9</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Throw Masters</td>
+                            <td>0</td>
+                            <td>-14</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="EasternConference" class="tabcontent" style="display:none;">
+                <h3>Eastern Conference</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="position-column">Position</th>
+                            <th class="team-column">Team</th>
+                            <th class="wins-column">Wins</th>
+                            <th class="pd-column">PD</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Field Service One</td>
+                            <td>1</td>
+                            <td>18</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Team HG</td>
+                            <td>1</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>J & J Finance Team</td>
+                            <td>1</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Hacky Sacks</td>
+                            <td>0</td>
+                            <td>-2</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Quality Squirrels</td>
+                            <td>0</td>
+                            <td>-4</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Pitch Please</td>
+                            <td>0</td>
+                            <td>-12</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>LSI Exec Team</td>
+                            <td>0</td>
+                            <td>-18</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Schedule section -->
+        <div id="schedule" class="section">
+            <h2>Weekly Schedule</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Week</th>
+                        <th>Time</th>
+                        <th>Matchup</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2</td>
+                        <td>11:30 AM</td>
+                        <td>Flying Sacks vs Bag Daddys</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>11:30 AM</td>
+                        <td>Highfliers vs Corn Huskers</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>11:30 AM</td>
+                        <td>Throw Masters vs Cornhole Contenders</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>12:00 PM</td>
+                        <td>Team HG vs LSI Exec Team</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>12:00 PM</td>
+                        <td>Quality Squirrels vs Field Service One</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>12:00 PM</td>
+                        <td>Pitch Please vs Hacky Sacks</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>12:00 PM</td>
+                        <td>Lighting Your Way to Another Loss vs J & J Finance Team</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Teams section -->
+        <div id="teams" class="section">
+            <h2>Teams</h2>
+            <p>List of teams participating in the Cornhole League.</p>
+            <!-- Add content about teams here -->
+        </div>
+
+        <!-- Rules section -->
+        <div id="rules" class="section">
+            <h2>Rules</h2>
+            <p>Rules for the Cornhole League.</p>
+            <!-- Add content about rules here -->
+        </div>
     </div>
 </div>
 

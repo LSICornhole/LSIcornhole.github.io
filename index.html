@@ -24,10 +24,6 @@
             text-align: center;
             width: 100%;
             box-sizing: border-box;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 10;
         }
         /* Container to center the content */
         .container {
@@ -44,7 +40,7 @@
             padding: 20px;
             box-sizing: border-box;
             position: fixed;
-            top: 60px; /* Align below the header */
+            top: 60px;
             left: 0;
             bottom: 0;
             z-index: 9;
@@ -93,18 +89,14 @@
             text-align: center;
             font-weight: bold;
             margin-bottom: 20px;
-            width: calc(100% - 240px); /* Adjust width to avoid overlapping with the sidebar */
-            position: fixed;
-            top: 60px; /* Align below the main header */
-            left: 220px; /* Align to the right of the sidebar */
-            z-index: 8;
+            border-radius: 5px;
         }
         /* Styling for the tables */
         table {
             width: 100%;
             max-width: 600px;
             border-collapse: collapse;
-            margin: 60px auto 20px; /* Add margin-top to avoid being covered by the fixed section header */
+            margin: 20px auto;
             background: #fff;
         }
         table, th, td {
@@ -165,11 +157,6 @@
                 margin-left: 0;
                 width: 100%;
             }
-            .section-header {
-                width: 100%;
-                left: 0;
-                top: 120px; /* Adjust top position for mobile */
-            }
             th, td {
                 padding: 10px; /* Smaller padding on mobile */
             }
@@ -179,7 +166,7 @@
         }
     </style>
     <script>
-        // JavaScript function to switch between sections
+        // JavaScript function to switch between tabs
         function openSection(event, sectionId) {
             var i, sections, links;
             sections = document.getElementsByClassName("section");

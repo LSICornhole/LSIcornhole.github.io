@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cornhole League</title>
-      <link rel="icon" href="LSI.png" type="image/x-icon">
+    <link rel="icon" href="LSI.png" type="image/x-icon">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -33,8 +33,12 @@
         h2, h3 {
             color: #333;
         }
+        .table-container {
+            display: flex;
+            justify-content: space-between;
+        }
         table {
-            width: 100%;
+            width: 48%;
             border-collapse: collapse;
             margin: 20px 0;
             background: #fff;
@@ -67,117 +71,122 @@
 <div class="container">
     <div class="section">
         <h2>Current Standings</h2>
-        <h3>Western Conference</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Rank</th>
-                    <th>Team</th>
-                    <th>Wins</th>
-                    <th>Point Difference (PD)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Flying Sacks</td>
-                    <td>1</td>
-                    <td>14</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Cornhole Contenders</td>
-                    <td>1</td>
-                    <td>9</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Corn Huskers</td>
-                    <td>1</td>
-                    <td>2</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Bag Daddys</td>
-                    <td>1</td>
-                    <td>1</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Lighting Your Way to Another Loss</td>
-                    <td>0</td>
-                    <td>-1</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Highfliers</td>
-                    <td>0</td>
-                    <td>-9</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>Throw Masters</td>
-                    <td>0</td>
-                    <td>-14</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>Eastern Conference</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Rank</th>
-                    <th>Team</th>
-                    <th>Wins</th>
-                    <th>Point Difference (PD)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Field Service One</td>
-                    <td>1</td>
-                    <td>18</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Team HG</td>
-                    <td>1</td>
-                    <td>12</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>J & J Finance Team</td>
-                    <td>1</td>
-                    <td>4</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Hacky Sacks</td>
-                    <td>0</td>
-                    <td>-2</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Quality Squirrels</td>
-                    <td>0</td>
-                    <td>-4</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Pitch Please</td>
-                    <td>0</td>
-                    <td>-12</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>LSI Exec Team</td>
-                    <td>0</td>
-                    <td>-18</td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="table-container">
+            <div>
+                <h3>Western Conference</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Team</th>
+                            <th>Wins</th>
+                            <th>Point Difference (PD)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Flying Sacks</td>
+                            <td>1</td>
+                            <td>14</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Cornhole Contenders</td>
+                            <td>1</td>
+                            <td>9</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Corn Huskers</td>
+                            <td>1</td>
+                            <td>2</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Bag Daddys</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Lighting Your Way to Another Loss</td>
+                            <td>0</td>
+                            <td>-1</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Highfliers</td>
+                            <td>0</td>
+                            <td>-9</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Throw Masters</td>
+                            <td>0</td>
+                            <td>-14</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <h3>Eastern Conference</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Team</th>
+                            <th>Wins</th>
+                            <th>Point Difference (PD)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Field Service One</td>
+                            <td>1</td>
+                            <td>18</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Team HG</td>
+                            <td>1</td>
+                            <td>12</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>J & J Finance Team</td>
+                            <td>1</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Hacky Sacks</td>
+                            <td>0</td>
+                            <td>-2</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Quality Squirrels</td>
+                            <td>0</td>
+                            <td>-4</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Pitch Please</td>
+                            <td>0</td>
+                            <td>-12</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>LSI Exec Team</td>
+                            <td>0</td>
+                            <td>-18</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 
     <div class="section">
@@ -226,7 +235,6 @@
                     <td>12:00 PM</td>
                     <td>Lighting Your Way to Another Loss vs J & J Finance Team</td>
                 </tr>
-                <!-- Add more matches as needed -->
             </tbody>
         </table>
     </div>

@@ -4,25 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cornhole League</title>
+    <!-- Link to the favicon image -->
     <link rel="icon" href="LSI.png" type="image/x-icon">
     <style>
+        /* Basic styling for the entire body */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
         }
+        /* Styling for the header */
         header {
             background-color: #B22222; /* Firebrick Red */
             color: white;
             padding: 1em 0;
             text-align: center;
         }
+        /* Container to center the content */
         .container {
             width: 80%;
             margin: auto;
             overflow: hidden;
         }
+        /* Section styling for different parts of the page */
         .section {
             background: white;
             padding: 20px;
@@ -33,12 +38,15 @@
         h2, h3 {
             color: #333;
         }
+        /* Container for the tables to ensure they are centered */
         .table-container {
             display: flex;
-            justify-content: space-between;
+            justify-content: center; /* Center the tables horizontally */
+            gap: 20px; /* Space between the tables */
         }
+        /* Styling for the tables */
         table {
-            width: 48%;
+            width: 45%; /* Adjusted to make tables more centered */
             border-collapse: collapse;
             margin: 20px 0;
             background: #fff;
@@ -64,14 +72,18 @@
 </head>
 <body>
 
+<!-- Header section -->
 <header>
     <h1>LSI's Summer Cornhole League</h1>
 </header>
 
+<!-- Main container -->
 <div class="container">
+    <!-- Current Standings section -->
     <div class="section">
         <h2>Current Standings</h2>
         <div class="table-container">
+            <!-- Western Conference standings table -->
             <div>
                 <h3>Western Conference</h3>
                 <table>
@@ -129,6 +141,7 @@
                     </tbody>
                 </table>
             </div>
+            <!-- Eastern Conference standings table -->
             <div>
                 <h3>Eastern Conference</h3>
                 <table>
@@ -189,6 +202,7 @@
         </div>
     </div>
 
+    <!-- Weekly Schedule section -->
     <div class="section">
         <h2>Weekly Schedule</h2>
         <table>

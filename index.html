@@ -1,162 +1,175 @@
-<!DOCTYPE html> <!-- Defines the document type as HTML -->
-<html lang="en"> <!-- Starts the HTML document and sets the language to English -->
-<head> <!-- Head section containing meta information and links -->
-    <meta charset="UTF-8"> <!-- Specifies the character encoding for the HTML document -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Sets the viewport to make the website responsive -->
-    <title>Cornhole League</title> <!-- Sets the title of the webpage -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cornhole League</title>
     <!-- Link to the favicon image -->
-    <link rel="icon" href="LSI.png" type="image/x-icon"> <!-- Links to the favicon image file -->
-    <style> <!-- Starts the CSS styling section -->
+    <link rel="icon" href="LSI.png" type="image/x-icon">
+    <style>
         /* Basic styling for the entire body */
         body {
-            font-family: Arial, sans-serif; /* Sets the font family */
-            margin: 0; /* Removes default margin */
-            padding: 0; /* Removes default padding */
-            background-color: #f4f4f4; /* Sets the background color */
-            display: flex; /* Uses flexbox layout */
-            flex-direction: column; /* Sets the direction of the flex items */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
         }
+        /* Styling for the header */
+        header {
+            background-color: #B22222; /* Firebrick Red */
+            color: white;
+            padding: 1em 0;
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
+        }
+        /* Container to center the content */
         .container {
-    display: flex; /* Uses flexbox layout */
-    flex: 1; /* Makes the container take up the remaining space */
-    margin-top: 60px; /* Space for the fixed header */
-}
+            display: flex;
+            flex: 1;
+            margin-top: 60px; /* Space for the fixed header */
+        }
         /* Sidebar styling */
         .sidebar {
-            background-color: #333; /* Dark gray background color */
-            color: white; /* White text color */
-            width: 200px; /* Fixed width */
-            min-height: 100vh; /* Minimum height of 100% of viewport height */
-            padding: 20px; /* Padding all around */
-            box-sizing: border-box; /* Includes padding and border in the element's total width and height */
-            position: fixed; /* Fixed position on the screen */
-            top: 0; /* Aligns to the top */
-            left: 0; /* Aligns to the left */
-            bottom: 0; /* Aligns to the bottom */
-            z-index: 9; /* Stacks the sidebar above other elements */
+            background-color: #333;
+            color: white;
+            width: 200px;
+            min-height: 100vh;
+            padding: 20px;
+            box-sizing: border-box;
+            position: fixed;
+            top: 60px; /* Aligns below the header */
+            left: 0;
+            bottom: 0;
+            z-index: 9;
         }
         .sidebar h3 {
-            color: #f4f4f4; /* Light gray text color */
+            color: #f4f4f4;
         }
         .sidebar ul {
-            list-style: none; /* Removes default list styling */
-            padding: 0; /* Removes default padding */
+            list-style: none;
+            padding: 0;
         }
         .sidebar ul li {
-            margin: 15px 0; /* Margin above and below each list item */
+            margin: 15px 0;
         }
         .sidebar ul li a {
-            color: white; /* White text color */
-            text-decoration: none; /* Removes underline from links */
-            display: block; /* Makes the link a block element */
-            padding: 10px; /* Padding all around */
-            background: #B22222; /* Firebrick Red background color */
-            border-radius: 5px; /* Rounded corners */
-            text-align: center; /* Centers the text */
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            background: #B22222;
+            border-radius: 5px;
+            text-align: center;
         }
         .sidebar ul li a:hover, .sidebar ul li a.active {
-            background: #444; /* Darker gray background color on hover and when active */
+            background: #444;
         }
         /* Main content area */
         .content {
-            margin-left: 220px; /* Margin to the left to avoid overlap with sidebar */
-            padding: 20px; /* Padding all around */
-            box-sizing: border-box; /* Includes padding and border in the element's total width and height */
-            width: calc(100% - 220px); /* Calculates width to fill remaining space */
+            margin-left: 220px;
+            padding: 20px;
+            box-sizing: border-box;
+            width: calc(100% - 220px);
         }
         .section {
-            display: none; /* Hides the section by default */
-            text-align: left; /* Aligns text to the left */
+            display: none;
+            text-align: left;
         }
         .section.active {
-            display: block; /* Displays the section when active */
+            display: block;
         }
         /* Header bar for each section */
-       .section-header {
-    background-color: #B22222; /* Firebrick Red background color */
-    color: white; /* White text color */
-    padding: 10px; /* Padding all around */
-    text-align: left; /* Aligns the text to the left */
-    font-weight: bold; /* Makes the text bold */
-    margin: 0; /* Removes margin */
-    width: 100%; /* Full width */
-    position: fixed; /* Fixes the header at the top */
-    top: 0; /* Aligns to the top of the page */
-    left: 0; /* Aligns to the left of the page */
-}
-
+        .section-header {
+            background-color: #B22222; /* Firebrick Red background color */
+            color: white; /* White text color */
+            padding: 10px; /* Padding all around */
+            text-align: left; /* Aligns the text to the left */
+            font-weight: bold; /* Makes the text bold */
+            margin: 0; /* Removes margin */
+            width: 100%; /* Full width */
+            position: fixed; /* Fixes the header at the top */
+            top: 0; /* Aligns to the top of the page */
+            left: 0; /* Aligns to the left of the page */
+            z-index: 10; /* Ensures it stays on top */
         }
         /* Styling for the tables */
         table {
-            width: 100%; /* Full width */
-            max-width: 600px; /* Maximum width */
-            border-collapse: collapse; /* Collapses the borders into a single border */
-            margin: 20px auto; /* Margin above and below, centered horizontally */
-            background: #fff; /* White background color */
+            width: 100%;
+            max-width: 600px;
+            border-collapse: collapse;
+            margin: 20px auto;
+            background: #fff;
         }
         table, th, td {
-            border: 1px solid #ddd; /* Light gray border */
+            border: 1px solid #ddd;
         }
         th, td {
-            padding: 12px; /* Padding all around */
-            text-align: left; /* Aligns text to the left */
+            padding: 12px;
+            text-align: left;
         }
         th {
-            background-color: #333; /* Dark gray background color */
-            color: white; /* White text color */
+            background-color: #333;
+            color: white;
         }
         tr:nth-child(even) {
-            background-color: #f2f2f2; /* Light gray background color for even rows */
+            background-color: #f2f2f2;
         }
         tr:hover {
-            background-color: #ddd; /* Darker gray background color on hover */
+            background-color: #ddd;
         }
         /* Adjust the width of specific columns */
         .team-column {
-            width: auto; /* Automatic width */
+            width: auto;
         }
         .position-column, .wins-column, .pd-column {
-            width: 40px; /* Fixed width for these columns */
+            width: 40px;
         }
         /* Styling for the tabs */
         .tabs {
-            display: flex; /* Uses flexbox layout */
-            justify-content: flex-start; /* Aligns tabs to the start */
-            margin-bottom: 20px; /* Margin below the tabs */
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 20px;
         }
         .tab {
-            background: #B22222; /* Firebrick Red background color */
-            color: white; /* White text color */
-            padding: 10px 20px; /* Padding on top, bottom, left, and right */
-            cursor: pointer; /* Changes cursor to pointer on hover */
-            margin: 0 5px; /* Margin on left and right */
-            border-radius: 5px; /* Rounded corners */
-            text-align: center; /* Centers the text */
+            background: #B22222;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 0 5px;
+            border-radius: 5px;
+            text-align: center;
         }
         .tab.active {
-            background: #333; /* Dark gray background color when active */
+            background: #333;
         }
         /* Media query for smaller screens */
         @media (max-width: 768px) {
             body {
-                flex-direction: column; /* Changes flex direction to column on small screens */
+                flex-direction: column;
             }
             .sidebar {
-                position: relative; /* Changes position to relative */
-                width: 100%; /* Full width */
-                min-height: auto; /* Automatic height */
-                top: 0; /* Aligns to the top */
-                left: 0; /* Aligns to the left */
+                position: relative;
+                width: 100%;
+                min-height: auto;
+                top: 0;
+                left: 0;
             }
             .content {
-                margin-left: 0; /* Removes left margin */
-                width: 100%; /* Full width */
+                margin-left: 0;
+                width: 100%;
             }
             th, td {
                 padding: 10px; /* Smaller padding on mobile */
             }
             .team-column, .position-column, .wins-column, .pd-column {
-                width: auto; /* Automatic width on mobile */
+                width: auto; /* Auto width on mobile */
             }
         }
     </style>
@@ -164,37 +177,37 @@
         // JavaScript function to switch between sections
         function openSection(event, sectionId) {
             var i, sections, links;
-            sections = document.getElementsByClassName("section"); // Gets all sections
+            sections = document.getElementsByClassName("section");
             for (i = 0; i < sections.length; i++) {
-                sections[i].classList.remove("active"); // Hides all sections
+                sections[i].classList.remove("active");
             }
-            links = document.querySelectorAll(".sidebar ul li a"); // Gets all sidebar links
+            links = document.querySelectorAll(".sidebar ul li a");
             for (i = 0; i < links.length; i++) {
-                links[i].classList.remove("active"); // Removes active class from all links
+                links[i].classList.remove("active");
             }
-            document.getElementById(sectionId).classList.add("active"); // Shows the clicked section
-            event.currentTarget.classList.add("active"); // Activates the clicked link
+            document.getElementById(sectionId).classList.add("active");
+            event.currentTarget.classList.add("active");
         }
 
         // JavaScript function to switch between tabs within a section
         function openTab(event, tabId) {
             var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tabcontent"); // Gets all tab content
+            tabcontent = document.getElementsByClassName("tabcontent");
             for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none"; // Hides all tab content
+                tabcontent[i].style.display = "none";
             }
-            tablinks = document.getElementsByClassName("tab"); // Gets all tabs
+            tablinks = document.getElementsByClassName("tab");
             for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", ""); // Removes active class from all tabs
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
             }
-            document.getElementById(tabId).style.display = "block"; // Shows the clicked tab content
-            event.currentTarget.className += " active"; // Activates the clicked tab
+            document.getElementById(tabId).style.display = "block";
+            event.currentTarget.className += " active";
         }
 
         // Default open section and tab
         window.onload = function() {
-            document.querySelector(".sidebar ul li a").click(); // Clicks the first sidebar link
-            document.querySelector(".tabs .tab").click(); // Clicks the first tab
+            document.querySelector(".sidebar ul li a").click();
+            document.querySelector(".tabs .tab").click();
         }
     </script>
 </head>
@@ -202,11 +215,11 @@
 
 <!-- Sidebar navigation -->
 <div class="sidebar">
-    <h3>LSI's Cornhole League</h3> <!-- Sidebar title -->
-    <ul> <!-- Unordered list for sidebar links -->
-        <li><a href="javascript:void(0);" onclick="openSection(event, 'current-standings')" class="active">Current Standings</a></li> <!-- Link to open Current Standings section -->
-        <li><a href="javascript:void(0);" onclick="openSection(event, 'schedule')">Schedule</a></li> <!-- Link to open Schedule section -->
-        <li><a href="javascript:void(0);" onclick="openSection(event, 'teams')">Teams</a></li> <!-- Link to open Teams section -->
+    <h3>LSI's Cornhole League</h3>
+    <ul>
+        <li><a href="javascript:void(0);" onclick="openSection(event, 'current-standings')" class="active">Current Standings</a></li>
+        <li><a href="javascript:void(0);" onclick="openSection(event, 'schedule')">Schedule</a></li>
+        <li><a href="javascript:void(0);" onclick="openSection(event, 'teams')">Teams</a></li>
     </ul>
 </div>
 
@@ -215,28 +228,28 @@
     <div class="content">
         <!-- Current Standings section -->
         <div id="current-standings" class="section active">
-            <div class="section-header">Current Standings</div> <!-- Section header -->
+            <div class="section-header">Current Standings</div>
             <div class="tabs">
-                <div class="tab active" onclick="openTab(event, 'WesternConference')">Western Conference</div> <!-- Tab for Western Conference -->
-                <div class="tab" onclick="openTab(event, 'EasternConference')">Eastern Conference</div> <!-- Tab for Eastern Conference -->
+                <div class="tab active" onclick="openTab(event, 'WesternConference')">Western Conference</div>
+                <div class="tab" onclick="openTab(event, 'EasternConference')">Eastern Conference</div>
             </div>
             <div id="WesternConference" class="tabcontent">
-                <h3>Western Conference</h3> <!-- Subsection title -->
+                <h3>Western Conference</h3>
                 <table>
                     <thead>
                         <tr>
-                            <th class="position-column">Position</th> <!-- Position column -->
-                            <th class="team-column">Team</th> <!-- Team column -->
-                            <th class="wins-column">Wins</th> <!-- Wins column -->
-                            <th class="pd-column">PD</th> <!-- Point Difference (PD) column -->
+                            <th class="position-column">Position</th>
+                            <th class="team-column">Team</th>
+                            <th class="wins-column">Wins</th>
+                            <th class="pd-column">PD</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td> <!-- Position -->
-                            <td>Flying Sacks</td> <!-- Team name -->
-                            <td>1</td> <!-- Wins -->
-                            <td>14</td> <!-- Point Difference (PD) -->
+                            <td>1</td>
+                            <td>Flying Sacks</td>
+                            <td>1</td>
+                            <td>14</td>
                         </tr>
                         <tr>
                             <td>2</td>
@@ -278,22 +291,22 @@
                 </table>
             </div>
             <div id="EasternConference" class="tabcontent" style="display:none;">
-                <h3>Eastern Conference</h3> <!-- Subsection title -->
+                <h3>Eastern Conference</h3>
                 <table>
                     <thead>
                         <tr>
-                            <th class="position-column">Position</th> <!-- Position column -->
-                            <th class="team-column">Team</th> <!-- Team column -->
-                            <th class="wins-column">Wins</th> <!-- Wins column -->
-                            <th class="pd-column">PD</th> <!-- Point Difference (PD) column -->
+                            <th class="position-column">Position</th>
+                            <th class="team-column">Team</th>
+                            <th class="wins-column">Wins</th>
+                            <th class="pd-column">PD</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>1</td> <!-- Position -->
-                            <td>Field Service One</td> <!-- Team name -->
-                            <td>1</td> <!-- Wins -->
-                            <td>18</td> <!-- Point Difference (PD) -->
+                            <td>1</td>
+                            <td>Field Service One</td>
+                            <td>1</td>
+                            <td>18</td>
                         </tr>
                         <tr>
                             <td>2</td>
@@ -338,20 +351,20 @@
 
         <!-- Schedule section -->
         <div id="schedule" class="section">
-            <div class="section-header">Weekly Schedule</div> <!-- Section header -->
+            <div class="section-header">Weekly Schedule</div>
             <table>
                 <thead>
                     <tr>
-                        <th>Week</th> <!-- Week column -->
-                        <th>Time</th> <!-- Time column -->
-                        <th>Matchup</th> <!-- Matchup column -->
+                        <th>Week</th>
+                        <th>Time</th>
+                        <th>Matchup</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>2</td> <!-- Week -->
-                        <td>11:30 AM</td> <!-- Time -->
-                        <td>Flying Sacks vs Bag Daddys</td> <!-- Matchup -->
+                        <td>2</td>
+                        <td>11:30 AM</td>
+                        <td>Flying Sacks vs Bag Daddys</td>
                     </tr>
                     <tr>
                         <td>2</td>
@@ -389,22 +402,22 @@
 
         <!-- Teams section -->
         <div id="teams" class="section">
-            <div class="section-header">Teams</div> <!-- Section header -->
+            <div class="section-header">Teams</div>
             <table>
                 <thead>
                     <tr>
-                        <th>Team Name</th> <!-- Team Name column -->
-                        <th>Member 1</th> <!-- Member 1 column -->
-                        <th>Member 2</th> <!-- Member 2 column -->
-                        <th>Alternates</th> <!-- Alternates column -->
+                        <th>Team Name</th>
+                        <th>Member 1</th>
+                        <th>Member 2</th>
+                        <th>Alternates</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Bag Daddys</td> <!-- Team name -->
-                        <td>Ryan Randle</td> <!-- Member 1 -->
-                        <td>Scott Sferra</td> <!-- Member 2 -->
-                        <td></td> <!-- Alternates -->
+                        <td>Bag Daddys</td>
+                        <td>Ryan Randle</td>
+                        <td>Scott Sferra</td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>LSI Exec Team</td>

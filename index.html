@@ -14,6 +14,7 @@
             padding: 0;
             background-color: #f4f4f4;
             display: flex;
+            flex-direction: column;
         }
         /* Styling for the header */
         header {
@@ -23,11 +24,16 @@
             text-align: center;
             width: 100%;
             box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 10;
         }
         /* Container to center the content */
         .container {
             display: flex;
             flex: 1;
+            margin-top: 60px; /* Space for the fixed header */
         }
         /* Sidebar styling */
         .sidebar {
@@ -38,8 +44,10 @@
             padding: 20px;
             box-sizing: border-box;
             position: fixed;
-            top: 0;
+            top: 60px;
             left: 0;
+            bottom: 0;
+            z-index: 9;
         }
         .sidebar h3 {
             color: #f4f4f4;
@@ -72,6 +80,7 @@
         }
         .section {
             display: none;
+            text-align: left;
         }
         .section.active {
             display: block;
@@ -118,6 +127,24 @@
         .position-column, .wins-column, .pd-column {
             width: 40px;
         }
+        /* Styling for the tabs */
+        .tabs {
+            display: flex;
+            justify-content: flex-start;
+            margin-bottom: 20px;
+        }
+        .tab {
+            background: #B22222;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 0 5px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .tab.active {
+            background: #333;
+        }
         /* Media query for smaller screens */
         @media (max-width: 768px) {
             body {
@@ -127,6 +154,8 @@
                 position: relative;
                 width: 100%;
                 min-height: auto;
+                top: 0;
+                left: 0;
             }
             .content {
                 margin-left: 0;
@@ -156,9 +185,25 @@
             event.currentTarget.classList.add("active");
         }
 
-        // Default open section
+        // JavaScript function to switch between tabs within a section
+        function openTab(event, tabId) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabId).style.display = "block";
+            event.currentTarget.className += " active";
+        }
+
+        // Default open section and tab
         window.onload = function() {
             document.querySelector(".sidebar ul li a").click();
+            document.querySelector(".tabs .tab").click();
         }
     </script>
 </head>
@@ -181,8 +226,8 @@
         <div id="current-standings" class="section active">
             <div class="section-header">Current Standings</div>
             <div class="tabs">
-                <div class="tab active" id="defaultOpen" onclick="openSection(event, 'WesternConference')">Western Conference</div>
-                <div class="tab" onclick="openSection(event, 'EasternConference')">Eastern Conference</div>
+                <div class="tab active" onclick="openTab(event, 'WesternConference')">Western Conference</div>
+                <div class="tab" onclick="openTab(event, 'EasternConference')">Eastern Conference</div>
             </div>
             <div id="WesternConference" class="tabcontent">
                 <h3>Western Conference</h3>

@@ -38,15 +38,30 @@
         h2, h3 {
             color: #333;
         }
-        /* Container for the tables to ensure they are centered */
-        .table-container {
+        /* Centering the h2 element */
+        h2 {
+            text-align: center;
+        }
+        /* Styling for the tabs */
+        .tabs {
             display: flex;
-            justify-content: center; /* Center the tables horizontally */
-            gap: 20px; /* Space between the tables */
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .tab {
+            background: #B22222;
+            color: white;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin: 0 5px;
+            border-radius: 5px;
+        }
+        .tab.active {
+            background: #333;
         }
         /* Styling for the tables */
         table {
-            width: 45%; /* Adjusted to make tables more centered */
+            width: 100%;
             border-collapse: collapse;
             margin: 20px 0;
             background: #fff;
@@ -68,7 +83,45 @@
         tr:hover {
             background-color: #ddd;
         }
+        /* Adjust the width of the Team column */
+        .team-column {
+            width: 200px;
+        }
+        /* Media query for smaller screens */
+        @media (max-width: 768px) {
+            .container {
+                width: 100%;
+                padding: 0 10px;
+            }
+            th, td {
+                padding: 10px; /* Smaller padding on mobile */
+            }
+            .team-column {
+                width: auto; /* Auto width on mobile */
+            }
+        }
     </style>
+    <script>
+        // JavaScript function to switch between tabs
+        function openTab(event, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            tablinks = document.getElementsByClassName("tab");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            event.currentTarget.className += " active";
+        }
+
+        // Default open tab
+        window.onload = function() {
+            document.getElementById("defaultOpen").click();
+        }
+    </script>
 </head>
 <body>
 
@@ -79,126 +132,126 @@
 
 <!-- Main container -->
 <div class="container">
-    <!-- Current Standings section -->
+    <!-- Current Standings section with tabs -->
     <div class="section">
         <h2>Current Standings</h2>
-        <div class="table-container">
-            <!-- Western Conference standings table -->
-            <div>
-                <h3>Western Conference</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Team</th>
-                            <th>Wins</th>
-                            <th>PD</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Flying Sacks</td>
-                            <td>1</td>
-                            <td>14</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Cornhole Contenders</td>
-                            <td>1</td>
-                            <td>9</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Corn Huskers</td>
-                            <td>1</td>
-                            <td>2</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Bag Daddys</td>
-                            <td>1</td>
-                            <td>1</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Lighting Your Way to Another Loss</td>
-                            <td>0</td>
-                            <td>-1</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>Highfliers</td>
-                            <td>0</td>
-                            <td>-9</td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>Throw Masters</td>
-                            <td>0</td>
-                            <td>-14</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <!-- Eastern Conference standings table -->
-            <div>
-                <h3>Eastern Conference</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Team</th>
-                            <th>Wins</th>
-                            <th>PD</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Field Service One</td>
-                            <td>1</td>
-                            <td>18</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Team HG</td>
-                            <td>1</td>
-                            <td>12</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>J & J Finance Team</td>
-                            <td>1</td>
-                            <td>4</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Hacky Sacks</td>
-                            <td>0</td>
-                            <td>-2</td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Quality Squirrels</td>
-                            <td>0</td>
-                            <td>-4</td>
-                        </tr>
-                        <tr>
-                            <td>6</td>
-                            <td>Pitch Please</td>
-                            <td>0</td>
-                            <td>-12</td>
-                        </tr>
-                        <tr>
-                            <td>7</td>
-                            <td>LSI Exec Team</td>
-                            <td>0</td>
-                            <td>-18</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+        <div class="tabs">
+            <div class="tab active" id="defaultOpen" onclick="openTab(event, 'WesternConference')">Western Conference</div>
+            <div class="tab" onclick="openTab(event, 'EasternConference')">Eastern Conference</div>
+        </div>
+        <div id="WesternConference" class="tabcontent">
+            <h3>Western Conference</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th class="team-column">Team</th>
+                        <th>Wins</th>
+                        <th>PD</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Flying Sacks</td>
+                        <td>1</td>
+                        <td>14</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Cornhole Contenders</td>
+                        <td>1</td>
+                        <td>9</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Corn Huskers</td>
+                        <td>1</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Bag Daddys</td>
+                        <td>1</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Lighting Your Way to Another Loss</td>
+                        <td>0</td>
+                        <td>-1</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Highfliers</td>
+                        <td>0</td>
+                        <td>-9</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>Throw Masters</td>
+                        <td>0</td>
+                        <td>-14</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="EasternConference" class="tabcontent" style="display:none;">
+            <h3>Eastern Conference</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th class="team-column">Team</th>
+                        <th>Wins</th>
+                        <th>PD</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Field Service One</td>
+                        <td>1</td>
+                        <td>18</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Team HG</td>
+                        <td>1</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>J & J Finance Team</td>
+                        <td>1</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Hacky Sacks</td>
+                        <td>0</td>
+                        <td>-2</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>Quality Squirrels</td>
+                        <td>0</td>
+                        <td>-4</td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>Pitch Please</td>
+                        <td>0</td>
+                        <td>-12</td>
+                    </tr>
+                    <tr>
+                        <td>7</td>
+                        <td>LSI Exec Team</td>
+                        <td>0</td>
+                        <td>-18</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 

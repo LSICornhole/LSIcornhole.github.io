@@ -76,6 +76,16 @@
         .section.active {
             display: block;
         }
+        /* Header bar for each section */
+        .section-header {
+            background-color: #B22222;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
         /* Styling for the tables */
         table {
             width: 100%;
@@ -156,12 +166,11 @@
 
 <!-- Sidebar navigation -->
 <div class="sidebar">
-    <h3>Navigation</h3>
+    <h3>LSI's Cornhole League</h3>
     <ul>
         <li><a href="javascript:void(0);" onclick="openSection(event, 'current-standings')" class="active">Current Standings</a></li>
         <li><a href="javascript:void(0);" onclick="openSection(event, 'schedule')">Schedule</a></li>
         <li><a href="javascript:void(0);" onclick="openSection(event, 'teams')">Teams</a></li>
-        <li><a href="javascript:void(0);" onclick="openSection(event, 'rules')">Rules</a></li>
     </ul>
 </div>
 
@@ -170,7 +179,7 @@
     <div class="content">
         <!-- Current Standings section -->
         <div id="current-standings" class="section active">
-            <h2>Current Standings</h2>
+            <div class="section-header">Current Standings</div>
             <div class="tabs">
                 <div class="tab active" id="defaultOpen" onclick="openSection(event, 'WesternConference')">Western Conference</div>
                 <div class="tab" onclick="openSection(event, 'EasternConference')">Eastern Conference</div>
@@ -293,7 +302,7 @@
 
         <!-- Schedule section -->
         <div id="schedule" class="section">
-            <h2>Weekly Schedule</h2>
+            <div class="section-header">Weekly Schedule</div>
             <table>
                 <thead>
                     <tr>
@@ -344,16 +353,103 @@
 
         <!-- Teams section -->
         <div id="teams" class="section">
-            <h2>Teams</h2>
-            <p>List of teams participating in the Cornhole League.</p>
-            <!-- Add content about teams here -->
-        </div>
-
-        <!-- Rules section -->
-        <div id="rules" class="section">
-            <h2>Rules</h2>
-            <p>Rules for the Cornhole League.</p>
-            <!-- Add content about rules here -->
+            <div class="section-header">Teams</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Team Name</th>
+                        <th>Member 1</th>
+                        <th>Member 2</th>
+                        <th>Alternates</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Bag Daddys</td>
+                        <td>Ryan Randle</td>
+                        <td>Scott Sferra</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>LSI Exec Team</td>
+                        <td>Alex Blondheim</td>
+                        <td>Leo Schmitt</td>
+                        <td>Regan Gougeon</td>
+                    </tr>
+                    <tr>
+                        <td>Lighting Your Way to Another Loss</td>
+                        <td>Brian Daley</td>
+                        <td>Marc Meyer</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Field Service One</td>
+                        <td>Tom Conners</td>
+                        <td>Ryley Lipscomb</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Highfliers</td>
+                        <td>Jordan Winters</td>
+                        <td>Adam Trent</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Quality Squirrels</td>
+                        <td>Brett Huelsman</td>
+                        <td>Tyler Mattingly</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Flying Sacks</td>
+                        <td>Jason Zhang</td>
+                        <td>Travis Wright</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Team HG</td>
+                        <td>Greg Nehus</td>
+                        <td>Harland Gascon</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Cornhole Contenders</td>
+                        <td>Sam Sarsalari</td>
+                        <td>Brett Rose</td>
+                        <td>Ritchey, Chad</td>
+                    </tr>
+                    <tr>
+                        <td>J & J Finance Throwers</td>
+                        <td>Jean Scharf</td>
+                        <td>Jeff Witajewski</td>
+                        <td>Carleigh Witajewski, Jeff Bastion</td>
+                    </tr>
+                    <tr>
+                        <td>Throw Masters</td>
+                        <td>Tracy Willman</td>
+                        <td>Mark Tuttle</td>
+                        <td>Greenwell, Joan</td>
+                    </tr>
+                    <tr>
+                        <td>Pitch Please</td>
+                        <td>Tia Colgate</td>
+                        <td>Karen Irvin</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Corn Huskers</td>
+                        <td>Tyler Wells</td>
+                        <td>Dylan Jara</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Hacky Sacks</td>
+                        <td>Michael Smith</td>
+                        <td>Shannon Beis</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>

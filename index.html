@@ -83,9 +83,12 @@
         tr:hover {
             background-color: #ddd;
         }
-        /* Adjust the width of the Team column */
+        /* Adjust the width of specific columns */
         .team-column {
             width: 400px;
+        }
+        .position-column, .wins-column, .pd-column {
+            width: 100px;
         }
         /* Media query for smaller screens */
         @media (max-width: 768px) {
@@ -97,6 +100,9 @@
                 padding: 10px; /* Smaller padding on mobile */
             }
             .team-column {
+                width: auto; /* Auto width on mobile */
+            }
+            .position-column, .wins-column, .pd-column {
                 width: auto; /* Auto width on mobile */
             }
         }
@@ -144,10 +150,10 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Position</th>
+                        <th class="position-column">Position</th>
                         <th class="team-column">Team</th>
-                        <th>Wins</th>
-                        <th>PD</th>
+                        <th class="wins-column">Wins</th>
+                        <th class="pd-column">PD</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -201,10 +207,10 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Position</th>
+                        <th class="position-column">Position</th>
                         <th class="team-column">Team</th>
-                        <th>Wins</th>
-                        <th>PD</th>
+                        <th class="wins-column">Wins</th>
+                        <th class="pd-column">PD</th>
                     </tr>
                 </thead>
                 <tbody>

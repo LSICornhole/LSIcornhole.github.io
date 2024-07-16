@@ -13,6 +13,7 @@
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            display: flex;
         }
         /* Styling for the header */
         header {
@@ -20,12 +21,13 @@
             color: white;
             padding: 1em 0;
             text-align: center;
+            width: 100%;
+            box-sizing: border-box;
         }
         /* Container to center the content */
         .container {
             display: flex;
-            margin: 0 auto;
-            width: 80%;
+            flex: 1;
         }
         /* Sidebar styling */
         .sidebar {
@@ -35,6 +37,9 @@
             min-height: 100vh;
             padding: 20px;
             box-sizing: border-box;
+            position: fixed;
+            top: 0;
+            left: 0;
         }
         .sidebar h3 {
             color: #f4f4f4;
@@ -60,9 +65,10 @@
         }
         /* Main content area */
         .content {
-            flex: 1;
+            margin-left: 220px;
             padding: 20px;
             box-sizing: border-box;
+            width: calc(100% - 220px);
         }
         .section {
             display: none;
@@ -104,13 +110,17 @@
         }
         /* Media query for smaller screens */
         @media (max-width: 768px) {
-            .container {
+            body {
                 flex-direction: column;
-                width: 100%;
             }
             .sidebar {
+                position: relative;
                 width: 100%;
                 min-height: auto;
+            }
+            .content {
+                margin-left: 0;
+                width: 100%;
             }
             th, td {
                 padding: 10px; /* Smaller padding on mobile */
@@ -144,25 +154,19 @@
 </head>
 <body>
 
-<!-- Header section -->
-<header>
-    <h1>LSI's Summer Cornhole League</h1>
-</header>
+<!-- Sidebar navigation -->
+<div class="sidebar">
+    <h3>Navigation</h3>
+    <ul>
+        <li><a href="javascript:void(0);" onclick="openSection(event, 'current-standings')" class="active">Current Standings</a></li>
+        <li><a href="javascript:void(0);" onclick="openSection(event, 'schedule')">Schedule</a></li>
+        <li><a href="javascript:void(0);" onclick="openSection(event, 'teams')">Teams</a></li>
+        <li><a href="javascript:void(0);" onclick="openSection(event, 'rules')">Rules</a></li>
+    </ul>
+</div>
 
-<!-- Main container -->
+<!-- Main content area -->
 <div class="container">
-    <!-- Sidebar navigation -->
-    <div class="sidebar">
-        <h3>Navigation</h3>
-        <ul>
-            <li><a href="javascript:void(0);" onclick="openSection(event, 'current-standings')" class="active">Current Standings</a></li>
-            <li><a href="javascript:void(0);" onclick="openSection(event, 'schedule')">Schedule</a></li>
-            <li><a href="javascript:void(0);" onclick="openSection(event, 'teams')">Teams</a></li>
-            <li><a href="javascript:void(0);" onclick="openSection(event, 'rules')">Rules</a></li>
-        </ul>
-    </div>
-
-    <!-- Main content area -->
     <div class="content">
         <!-- Current Standings section -->
         <div id="current-standings" class="section active">

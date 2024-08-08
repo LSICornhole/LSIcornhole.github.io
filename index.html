@@ -209,7 +209,8 @@
     <img src="LSI-Logo_Red_2019-300x300.png" alt="LSI Logo" style="width: 100%; height: auto; margin-bottom: 10px;">
     <h3>LSI's Cornhole League</h3>
     <ul>
-        <li><a href="javascript:void(0);" onclick="openSection(event, 'current-standings')" class="active">Current Standings</a></li>
+        <li><a href="javascript:void(0);" onclick="openSection(event, 'final-bracket')" class="active">Final Bracket</a></li>
+        <li><a href="javascript:void(0);" onclick="openSection(event, 'current-standings')">Current Standings</a></li>
         <li><a href="javascript:void(0);" onclick="openSection(event, 'schedule')">Schedule</a></li>
         <li><a href="javascript:void(0);" onclick="openSection(event, 'teams')">Teams</a></li>
     </ul>
@@ -218,8 +219,14 @@
 <!-- Main content area -->
 <div class="container">
     <div class="content">
+        <!-- Final Bracket section -->
+        <div id="final-bracket" class="section active">
+            <div class="section-header">Final Bracket</div>
+            <img src="LSI-Logo_Red_2019-300x300.png" alt="Final Bracket" style="width: 100%; height: auto; margin-top: 20px;">
+        </div>
+        
         <!-- Current Standings section -->
-        <div id="current-standings" class="section active">
+        <div id="current-standings" class="section">
             <div class="section-header">Current Standings</div>
             <div class="tabs">
                 <div class="tab active" onclick="openTab(event, 'WesternConference')">Western Conference</div>
@@ -368,11 +375,6 @@
                         <td>11:30 AM</td>
                         <td>Cornhole Contenders vs Bag Daddys</td>
                     </tr>
-                     <tr>
-                        <td>5</td>
-                        <td>11:30 AM</td>
-                        <td>Throw Masters vs Highfliers</td>
-                    </tr>
                     <tr>
                         <td>5</td>
                         <td>12:00 PM</td>
@@ -382,6 +384,11 @@
                         <td>5</td>
                         <td>12:00 PM</td>
                         <td>Pitch Please vs Quality Squirrels</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>12:00 PM</td>
+                        <td>Throw Masters vs Highfliers</td>
                     </tr>
                     <tr>
                         <td>5</td>
